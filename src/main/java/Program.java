@@ -145,6 +145,8 @@ public class Program {
             x = random.nextInt(fieldSizeX);
             y = random.nextInt(fieldSizeY);
         }while (!isCellEmpty(x,y));
+        point[0] = x;
+        point[1] = y;
         field[x][y] = DOT_AI;
     }
 
@@ -235,7 +237,7 @@ public class Program {
         int offset = X-Y; // шаг смещения
         for (int x = X; x < fieldSizeX; x++) {
             for (int y = Y; y < fieldSizeY; y++) {
-                if(X-Y-offset == 0) {
+                if(x+y+offset == areaSize-1 || x == y+offset) {
                     if (field[x][y] == c) {
                         count++;
                     } else {
@@ -244,7 +246,7 @@ public class Program {
                 }
             }
             for (int y = Y-1; y >= 0 ; y--) {
-                if(X-Y-offset == 0) {
+                if(x+y+offset == areaSize-1 || x == y+offset) {
                     if (field[x][y] == c) {
                         count++;
                     } else {
@@ -259,7 +261,7 @@ public class Program {
         count = 0;
         for (int y = Y; y < fieldSizeY; y++) {
             for (int x = X; x < fieldSizeX; x++) {
-                if(X-Y-offset == 0) {
+                if(x+y+offset == areaSize-1 || x == y+offset) {
                     if (field[x][y] == c) {
                         count++;
                     } else {
@@ -268,7 +270,7 @@ public class Program {
                 }
             }
             for (int x = X-1; x >= 0 ; x--) {
-                if(X-Y-offset == 0) {
+                if(x+y+offset == areaSize-1 || x == y+offset) {
                     if (field[x][y] == c) {
                         count++;
                     } else {
@@ -277,7 +279,7 @@ public class Program {
                 }
             }
         }
-        if (count == fieldSizeX) return true;
+        if (count >= minVictory) return true;
 
         return false;
     }
