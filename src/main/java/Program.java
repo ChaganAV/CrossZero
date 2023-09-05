@@ -193,29 +193,7 @@ public class Program {
     private static boolean checkWin(char c){
         int X = point[0];
         int Y = point[1];
-        //
-        /* Простой вариант проверки по горизонтали
-        if (field[0][0] == c && field[0][1] == c && field[0][2] == c && field[0][3] == c && field[0][4] == c) return true;
-        if (field[1][0] == c && field[1][1] == c && field[1][2] == c && field[1][3] == c && field[1][4] == c) return true;
-        if (field[2][0] == c && field[2][1] == c && field[2][2] == c && field[2][3] == c && field[2][4] == c) return true;
-        if (field[3][0] == c && field[3][1] == c && field[3][2] == c && field[3][3] == c && field[3][4] == c) return true;
-        if (field[4][0] == c && field[4][1] == c && field[4][2] == c && field[4][3] == c && field[4][4] == c) return true;
-         */
 
-
-        // Проверки по вертикали
-        /*int count = 0;
-        for (int x = X; x < fieldSizeX; x++) {
-            for (int y = Y; y < fieldSizeY; y++) {
-                if(field[x][y] == c){
-                    count++;
-                }else {
-                    break;
-                }
-            }
-            if(count==fieldSizeX) return true;
-            count = 0;
-        }*/
         // Проверка по вертикали в обе стороны
         int count = 0;
         for (int x = X; x < fieldSizeX; x++) {
@@ -236,14 +214,6 @@ public class Program {
 
         // Проверки по горизонтали
         count = 0;
-        /*
-        for (int y = 0; y < fieldSizeY; y++) {
-            for (int x = 0; x < fieldSizeX; x++) {
-                if(field[x][y] == c) count++;
-            }
-            if(count==fieldSizeY) return true;
-            count = 0;
-        }*/
         for (int y = Y; y < fieldSizeY; y++) {
             if(field[X][y] == c){
                 count++;
@@ -262,14 +232,6 @@ public class Program {
 
         // Проверки диагонали по X
         count = 0;
-        /*
-        for (int x = 0; x < fieldSizeX; x++) {
-            for (int y = 0; y < fieldSizeY; y++) {
-                if (x == y){
-                    if(field[x][y] == c) count++;
-                }
-            }
-        }*/
         int offset = X-Y; // шаг смещения
         for (int x = X; x < fieldSizeX; x++) {
             for (int y = Y; y < fieldSizeY; y++) {
@@ -295,13 +257,6 @@ public class Program {
 
         // Проверка диагонали по Y
         count = 0;
-//        for (int x = fieldSizeX-1; x >=0; x--) {
-//            for (int y = fieldSizeY; y >= 0; y--) {
-//                if (x == y){
-//                    if(field[x][y] == c) count++;
-//                }
-//            }
-//        }
         for (int y = Y; y < fieldSizeY; y++) {
             for (int x = X; x < fieldSizeX; x++) {
                 if(X-Y-offset == 0) {
